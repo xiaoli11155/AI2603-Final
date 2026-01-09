@@ -225,9 +225,6 @@ class MinimaxPolicy(Policy):
         super().__init__(observation_space, action_space, config or {})
         self.action_space_dim = action_space.n
 
-    # ======================================================
-    # Action <-> Move
-    # ======================================================
     def _move_to_action(self, move: Move):
         n = self.triangle_size
         if move == Move.END_TURN:
@@ -238,9 +235,7 @@ class MinimaxPolicy(Policy):
             move.direction + 6 * ((r + 2 * n) + (4 * n + 1) * (q + 2 * n))
         )
 
-    # ======================================================
-    # Observation -> Game reconstruction
-    # ======================================================
+
     def _reconstruct_game(self, obs):
         n = self.triangle_size
         dim = 4 * n + 1
@@ -283,7 +278,7 @@ class MinimaxPolicy(Policy):
                 #else:
                     #print(q,r,s,-1)
 
-    # jump reconstruction（原逻辑保留）
+
         if last_jump_dest:
             prev = None
             for src in jump_sources:
@@ -303,18 +298,11 @@ class MinimaxPolicy(Policy):
 
         return game
             
-
-    # ======================================================
-    # Heuristic
-    # ======================================================
     def _evaluate_state(self, game):
         idx = np.where((game.board == 0) | (game.board == 3))
         rs = idx[1]**2
         return np.sum(rs)
-
-    # ======================================================
-    # Alpha-Beta Minimax
-    # ======================================================
+    
     def _minimax(self, game, depth, alpha, beta, maximizing):
         if depth == 0 or game.is_game_over():
             return self._evaluate_state(game)
@@ -361,9 +349,7 @@ class MinimaxPolicy(Policy):
                     break
             return value
 
-    # ======================================================
-    # RLlib Interface (完全仿 Greedy)
-    # ======================================================
+   
     def compute_actions(
         self,
         obs_batch,
