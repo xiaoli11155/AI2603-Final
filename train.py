@@ -3,6 +3,7 @@ import os
 import numpy as np
 import glob
 import argparse
+import torch
 
 from gymnasium.spaces import Box, Discrete
 
@@ -27,7 +28,7 @@ from ChineseChecker.models.action_masking import ActionMaskModel
 from ChineseChecker.logger import custom_log_creator
 from rllib_marl import train
 
-def create_config(env_name: str, triangle_size: int = 4, entropy_coeff: float = 0.0):
+def create_config(env_name: str, triangle_size: int = 4, entropy_coeff: float = 0.0, train_iters: int = 100):
     """
     创建PPO训练配置
     
@@ -40,9 +41,25 @@ def create_config(env_name: str, triangle_size: int = 4, entropy_coeff: float = 
 
     # 神经网络配置：
     model_config = {
-        # "fcnet_hiddens": [64, 64]
-        "fcnet_hiddens": [256, 128]
+        # 更深的前馈网络以提升后期表现
+        "fcnet_hiddens": [512, 256, 128]
     }
+
+    # 预期的训练样本数用于学习率调度
+    train_batch_size = 1024
+    lr_start = 3e-4
+    lr_mid = 1.5e-4
+    lr_end = 5e-5
+    expected_total_env_steps = int(train_batch_size * train_iters)
+
+    entropy_start = max(entropy_coeff, 0.01)
+    entropy_mid = entropy_start * 0.4
+    entropy_final = 0.0
+    entropy_schedule = [
+        [0, entropy_start],
+        [int(expected_total_env_steps * 0.5), entropy_mid],
+        [expected_total_env_steps, entropy_final],
+    ]
 
     # 定义RL模块规格
     rlm_spec = SingleAgentRLModuleSpec(
@@ -54,7 +71,7 @@ def create_config(env_name: str, triangle_size: int = 4, entropy_coeff: float = 
     action_space_dim = (4 * triangle_size + 1) * (4 * triangle_size + 1) * 6 * 2 + 1
     # 观察空间形状：(4n+1)^2 × 4个通道，扁平化
     observation_space_shape = ((4 * triangle_size + 1) * (4 * triangle_size + 1) * 4,)
-
+    
     # 主要配置：配置ActionMaskEnv和ActionMaskModel
     config = (
         PPOConfig()
@@ -75,18 +92,22 @@ def create_config(env_name: str, triangle_size: int = 4, entropy_coeff: float = 
             ###################
             # TODO: 训练参数配置
             ###################
-            # train_batch_size=512,
-            # lr=2e-5,
-            # gamma=0.99,
-            # lambda_=0.9,
-            # use_gae=True,
-            # clip_param=0.4,
-            # grad_clip=None,
-            # entropy_coeff_schedule = None,
-            # vf_loss_coeff=0.25,
-            # sgd_minibatch_size=64,
-            # num_sgd_iter=10,
-            entropy_coeff=entropy_coeff,  # 熵系数，控制探索程度
+            train_batch_size=train_batch_size,
+            lr=lr_start,
+            lr_schedule=[
+                [0, lr_start],
+                [int(expected_total_env_steps * 0.5), lr_mid],
+                [expected_total_env_steps, lr_end],
+            ],
+            gamma=0.99,
+            lambda_=0.9,
+            use_gae=True,
+            clip_param=0.2,
+            grad_clip=0.5,
+            vf_loss_coeff=0.25,
+            sgd_minibatch_size=256,
+            num_sgd_iter=10,
+            entropy_coeff=entropy_schedule,
             _enable_learner_api=True  # 启用新的Learner API
         )
         # 实验性设置：禁用预处理器，因为环境返回的是字典观察
@@ -96,7 +117,7 @@ def create_config(env_name: str, triangle_size: int = 4, entropy_coeff: float = 
         .framework("torch")  # 使用PyTorch框架
         .resources(
             # GPU资源设置：使用环境变量RLLIB_NUM_GPUS指定的GPU数量
-            num_gpus=int(os.environ.get("RLLIB_NUM_GPUS", "0"))
+            num_gpus=int(os.environ.get("RLLIB_NUM_GPUS", "1"))
         )
         .rl_module(rl_module_spec=rlm_spec)  # 设置RL模块
     )
@@ -123,7 +144,23 @@ def main(args):
     ray.init(num_cpus=1 or None, local_mode=True)
     
     # 创建配置
-    config = create_config(env_name, args.triangle_size, args.entropy_coeff)
+    config = create_config(env_name, args.triangle_size, args.entropy_coeff, args.train_iters)
+    # 打印设备信息（在训练开始前输出是否使用 GPU/CPU）
+    try:
+        cuda_available = torch.cuda.is_available()
+        num_cuda = torch.cuda.device_count() if cuda_available else 0
+    except Exception:
+        cuda_available = False
+        num_cuda = 0
+    rllib_num_gpus = int(os.environ.get("RLLIB_NUM_GPUS", "0"))
+    if cuda_available and rllib_num_gpus > 0:
+        print(f"Using GPU: torch detects CUDA ({num_cuda} device(s)), RLLIB_NUM_GPUS={rllib_num_gpus}")
+    elif cuda_available and rllib_num_gpus == 0:
+        print(f"CUDA available ({num_cuda} device(s)) but RLLIB_NUM_GPUS=0 — Ray will not allocate GPUs unless configured")
+    elif not cuda_available and rllib_num_gpus > 0:
+        print(f"RLLIB_NUM_GPUS={rllib_num_gpus} but CUDA not available to torch — training will run on CPU")
+    else:
+        print("Using CPU (no CUDA available and RLLIB_NUM_GPUS=0)")
     
     # 训练配置参数
     train_config = {
@@ -153,7 +190,7 @@ if __name__ == "__main__":
     parser.add_argument('--train_iters', type=int, default=100)  # 训练迭代次数
     parser.add_argument('--triangle_size', type=int, required=True)  # 三角区域大小
     parser.add_argument('--eval_period', type=int, default=5)  # 评估周期（每多少次训练迭代评估一次）
-    parser.add_argument('--eval_num_trials', type=int, default=10)  # 评估试验次数
+    parser.add_argument('--eval_num_trials', type=int, default=30)  # 评估试验次数
     parser.add_argument('--eval_max_iters', type=int, default=400)  # 评估最大迭代次数
     parser.add_argument('--entropy_coeff', type=float, default=0.001)
     parser.add_argument('--render_mode', type=str, default=None)  # 渲染模式

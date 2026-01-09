@@ -1,6 +1,7 @@
 import csv
 import datetime
 import os
+import copy
 import numpy as np
 import glob
 import argparse
@@ -195,7 +196,237 @@ class GreedyPolicy(Policy):
         )[0]
 
 # TODO: Your Policy
+from ChineseChecker.env.game import (
+    ChineseCheckers,
+    Direction,
+    Move,
+    Position
+)
 
 
+class MinimaxPolicy(Policy):
+    """
+    Alpha-Beta Minimax Policy for Chinese Checkers
+    (RLlib-compatible, Greedy-style interface)
+    """
+
+    def __init__(self, triangle_size=4, depth=2, config=None):
+        self.triangle_size = triangle_size
+        self.depth = depth
+
+        observation_space = Box(
+            low=0,
+            high=1,
+            shape=((4 * triangle_size + 1) ** 2 * 4,),
+            dtype=np.int8
+        )
+        action_space = Discrete((4 * triangle_size + 1) ** 2 * 6 * 2 + 1)
+
+        super().__init__(observation_space, action_space, config or {})
+        self.action_space_dim = action_space.n
+
+    # ======================================================
+    # Action <-> Move
+    # ======================================================
+    def _move_to_action(self, move: Move):
+        n = self.triangle_size
+        if move == Move.END_TURN:
+            return (4 * n + 1) ** 2 * 6 * 2
+
+        q, r = move.position.q, move.position.r
+        return int(move.is_jump) + 2 * (
+            move.direction + 6 * ((r + 2 * n) + (4 * n + 1) * (q + 2 * n))
+        )
+
+    # ======================================================
+    # Observation -> Game reconstruction
+    # ======================================================
+    def _reconstruct_game(self, obs):
+        n = self.triangle_size
+        dim = 4 * n + 1
+    
+        game = ChineseCheckers(n)
+        game._jumps = []
+        game.current_player = 0
+        game.init_game()
+        game.rotation = 0
+        game.board[game.board >= 0] = ChineseCheckers.EMPTY_SPACE
+        #print(obs["observation"].shape)
+        channels = obs["observation"].reshape(dim, dim, 4)
+
+        jump_sources = []
+        last_jump_dest = None
+        #print(1234)
+        for q in range(-2 * n, 2 * n + 1):
+            for r in range(-2 * n, 2 * n + 1):
+                s = -q - r
+
+                if abs(s) > 2 * n:
+                    continue
+                i, j = q, r 
+
+                if channels[i, j, 0] == 1:
+                    #print(q,r,s,0)
+                    game._set_coordinate(q, r, s, 0)
+
+                if channels[i, j, 1] == 1:
+                    #print(q,r,s,1)
+                    game._set_coordinate(q, r, s, 3)
+
+                if channels[i, j, 2] == 1:
+                    #print(q,r,s,2)
+                    jump_sources.append(Position(q, r))
+
+                if channels[i, j, 3] == 1:
+                    #print(q,r,s,3)
+                    last_jump_dest = Position(q, r)
+                #else:
+                    #print(q,r,s,-1)
+
+    # jump reconstruction（原逻辑保留）
+        if last_jump_dest:
+            prev = None
+            for src in jump_sources:
+                for d in Direction:
+                    if src.neighbor(d, 2) == last_jump_dest:
+                        prev = src
+                        game._jumps.append(Move(src.q, src.r, d, True))
+                        break
+                if prev:
+                    break
+
+            for src in jump_sources:
+                if src != prev and src != last_jump_dest:
+                    game._jumps.insert(
+                    0, Move(src.q, src.r, Direction.Right, True)
+                )
+
+        return game
+            
+
+    # ======================================================
+    # Heuristic
+    # ======================================================
+    def _evaluate_state(self, game):
+        idx = np.where((game.board == 0) | (game.board == 3))
+        rs = idx[1]**2
+        return np.sum(rs)
+
+    # ======================================================
+    # Alpha-Beta Minimax
+    # ======================================================
+    def _minimax(self, game, depth, alpha, beta, maximizing):
+        if depth == 0 or game.is_game_over():
+            return self._evaluate_state(game)
+
+        player = 0 if maximizing else 3
+        moves = game.get_legal_moves(player)
+
+        if maximizing:
+            value = -float("inf")
+            for move in moves:
+                g = copy.deepcopy(game)
+                g.move(player, move)
+                next_max = maximizing
+                next_depth = depth
+                if move == Move.END_TURN or not move.is_jump:
+                    next_max = not maximizing
+                    next_depth -= 1
+
+                value = max(
+                    value,
+                    self._minimax(g, next_depth, alpha, beta, next_max)
+                )
+                alpha = max(alpha, value)
+                if alpha >= beta:
+                    break
+            return value
+        else:
+            value = float("inf")
+            for move in moves:
+                g = copy.deepcopy(game)
+                g.move(player, move)
+                next_max = maximizing
+                next_depth = depth
+                if move == Move.END_TURN or not move.is_jump:
+                    next_max = not maximizing
+                    next_depth -= 1
+
+                value = min(
+                    value,
+                    self._minimax(g, next_depth, alpha, beta, next_max)
+                )
+                beta = min(beta, value)
+                if beta <= alpha:
+                    break
+            return value
+
+    # ======================================================
+    # RLlib Interface (完全仿 Greedy)
+    # ======================================================
+    def compute_actions(
+        self,
+        obs_batch,
+        state_batches=None,
+        prev_action_batch=None,
+        prev_reward_batch=None,
+        info_batch=None,
+        episodes=None,
+        **kwargs
+    ):
+        actions = []
+
+        for obs in obs_batch:
+            game = self._reconstruct_game(obs)
+            best_value = -float("inf")
+            best_move = None
+            alpha, beta = -float("inf"), float("inf")
+            for move in game.get_legal_moves(0):
+
+                g = copy.deepcopy(game)
+                g.move(0, move)
+
+                if move == Move.END_TURN or not move.is_jump:
+                    val = self._minimax(g, self.depth - 1, alpha, beta, False)
+                else:
+                    val = self._minimax(g, self.depth, alpha, beta, True)
+
+                if val > best_value:
+                    best_value = val
+                    best_move = move
+
+                alpha = max(alpha, val)
+
+            if best_move is None:
+                actions.append(self.action_space_dim - 1)
+            else:
+                #print(best_move)
+                actions.append(self._move_to_action(best_move))
+
+        return actions, [], {}
+
+    def compute_single_action(
+        self,
+        obs,
+        state=None,
+        prev_action=None,
+        prev_reward=None,
+        info=None,
+        episode=None,
+        **kwargs
+    ):
+        return self.compute_actions(
+            [obs],
+            state_batches=[state],
+            prev_action_batch=[prev_action],
+            prev_reward_batch=[prev_reward],
+            info_batch=[info],
+            episodes=[episode],
+            **kwargs
+        )[0]
+
+
+
+  
 if __name__ == "__main__":
     pass

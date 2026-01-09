@@ -39,7 +39,9 @@ def play(args):
         #############################
         # TODO: 导入你的minimax agent
         #############################
-        your_policy = None
+        your_policy = MinimaxPolicy(
+        triangle_size=args.triangle_size,
+        depth=2)
     else:
         # 若你实现了基于强化学习的agent，在此处导入
         your_policy = load_policy(args.checkpoint)
@@ -59,7 +61,7 @@ def play(args):
 def evaluate_20_trials(env, your_policy, baseline_policy, render_mode=None):
     won = 0
 
-    for i in tqdm(range(20)):
+    for i in tqdm(range(30)):
         env.reset(seed=i)
         for a in range(len(env.possible_agents)):
             env.action_space(env.possible_agents[a]).seed(i)
@@ -84,7 +86,7 @@ def evaluate_20_trials(env, your_policy, baseline_policy, render_mode=None):
         if env.unwrapped.winner == env.possible_agents[0]:
             won += 1
     
-    return won / 20.0
+    return won / 30.0
 
 
 if __name__ == "__main__":

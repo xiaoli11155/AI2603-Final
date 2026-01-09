@@ -1,0 +1,602 @@
+[
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint0",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint1",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint2",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint3",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint4",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint5",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint6",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint7",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint8",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint9",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint10",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint11",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint12",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint13",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint14",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint15",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint16",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint17",
+    "winrate": 0.06666666666666667,
+    "wins": 2,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint18",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint19",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint20",
+    "winrate": 0.0,
+    "wins": 0,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint21",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint22",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint23",
+    "winrate": 0.1,
+    "wins": 3,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint24",
+    "winrate": 0.1,
+    "wins": 3,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint25",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint26",
+    "winrate": 0.06666666666666667,
+    "wins": 2,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint27",
+    "winrate": 0.16666666666666666,
+    "wins": 5,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint28",
+    "winrate": 0.03333333333333333,
+    "wins": 1,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint29",
+    "winrate": 0.1,
+    "wins": 3,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint30",
+    "winrate": 0.23333333333333334,
+    "wins": 7,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint31",
+    "winrate": 0.06666666666666667,
+    "wins": 2,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint32",
+    "winrate": 0.06666666666666667,
+    "wins": 2,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint33",
+    "winrate": 0.2,
+    "wins": 6,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint34",
+    "winrate": 0.2,
+    "wins": 6,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint35",
+    "winrate": 0.2,
+    "wins": 6,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint36",
+    "winrate": 0.06666666666666667,
+    "wins": 2,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint37",
+    "winrate": 0.2,
+    "wins": 6,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint38",
+    "winrate": 0.13333333333333333,
+    "wins": 4,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint39",
+    "winrate": 0.16666666666666666,
+    "wins": 5,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint40",
+    "winrate": 0.2,
+    "wins": 6,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint41",
+    "winrate": 0.4,
+    "wins": 12,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint42",
+    "winrate": 0.5666666666666667,
+    "wins": 17,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint43",
+    "winrate": 0.5,
+    "wins": 15,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint44",
+    "winrate": 0.5666666666666667,
+    "wins": 17,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint45",
+    "winrate": 0.6,
+    "wins": 18,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint46",
+    "winrate": 0.6333333333333333,
+    "wins": 19,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint47",
+    "winrate": 0.4666666666666667,
+    "wins": 14,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint48",
+    "winrate": 0.5666666666666667,
+    "wins": 17,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint49",
+    "winrate": 0.7,
+    "wins": 21,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint50",
+    "winrate": 0.4666666666666667,
+    "wins": 14,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint51",
+    "winrate": 0.6333333333333333,
+    "wins": 19,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint52",
+    "winrate": 0.5,
+    "wins": 15,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint53",
+    "winrate": 0.8,
+    "wins": 24,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint54",
+    "winrate": 0.5666666666666667,
+    "wins": 17,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint55",
+    "winrate": 0.7,
+    "wins": 21,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint56",
+    "winrate": 0.7666666666666667,
+    "wins": 23,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint57",
+    "winrate": 0.6,
+    "wins": 18,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint58",
+    "winrate": 0.5333333333333333,
+    "wins": 16,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint59",
+    "winrate": 0.5666666666666667,
+    "wins": 17,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint60",
+    "winrate": 0.7,
+    "wins": 21,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint61",
+    "winrate": 0.7333333333333333,
+    "wins": 22,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint62",
+    "winrate": 0.6,
+    "wins": 18,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint63",
+    "winrate": 0.7666666666666667,
+    "wins": 23,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint64",
+    "winrate": 0.6666666666666666,
+    "wins": 20,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint65",
+    "winrate": 0.7666666666666667,
+    "wins": 23,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint66",
+    "winrate": 0.9,
+    "wins": 27,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint67",
+    "winrate": 0.8,
+    "wins": 24,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint68",
+    "winrate": 0.7666666666666667,
+    "wins": 23,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint69",
+    "winrate": 0.6333333333333333,
+    "wins": 19,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint70",
+    "winrate": 0.8666666666666667,
+    "wins": 26,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint71",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint72",
+    "winrate": 0.8666666666666667,
+    "wins": 26,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint73",
+    "winrate": 0.8666666666666667,
+    "wins": 26,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint74",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint75",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint76",
+    "winrate": 0.8666666666666667,
+    "wins": 26,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint77",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint78",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint79",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint80",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint81",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint82",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint83",
+    "winrate": 0.9333333333333333,
+    "wins": 28,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint84",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint85",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint86",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint87",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint88",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint89",
+    "winrate": 0.9,
+    "wins": 27,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint90",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint91",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint92",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint93",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint94",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint95",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint96",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint97",
+    "winrate": 0.9666666666666667,
+    "wins": 29,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint98",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  },
+  {
+    "checkpoint": "logs/chinese_checkers_full_sharing0.001_2025-12-20_10-45-41/checkpoint99",
+    "winrate": 1.0,
+    "wins": 30,
+    "games": 30
+  }
+]
